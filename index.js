@@ -1,8 +1,10 @@
 // gets information from the API
 
+limit = 5
+
 fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity')
 .then(res => res.json())
-.then(data => data.top.slice(0, 5).forEach(createAnimeCards))
+.then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
 
 const animeCollection = document.getElementById('anime-collection')
@@ -49,13 +51,32 @@ function createAnimeCards(data) {
     rank.textContent = `Rank #${data.rank}`
 }
 
+// search bar
+
+const searchForm = document.getElementById('search')
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    animeCollection.innerHTML = ''
+
+    const searching = document.getElementById('input-text').value
+    fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
+    .then(res => res.json())
+    .then(data => console.log(data.results.forEach(createAnimeCards)))
+})
+
+
+
+// searchAnime(createAnimeCards)
+
+
+
+// Dark mode toggle
 function darkMode() {
     const element = document.body;
     element.classList.toggle("dark-mode");
     const button = document.querySelectorAll("button")
     button.forEach(element => {
         element.classList.toggle("myDarkButton")
-
     })
-
 }
