@@ -33,6 +33,8 @@ function createAnimeCards(data) {
         addToUserList(faveName)
     })
 
+    // eventlistener for removing from list
+
     // adding like count
     const likes = document.createElement('p')
     let like = parseInt(data.score)
@@ -79,14 +81,24 @@ function createAnimeCards(data) {
 const userList = document.getElementsByClassName('user-list')
 const listTitle = document.getElementById('list-title')
 
-// 
+// add to user list
 function addToUserList(faveName) {
     const newFavItem = document.createElement('li')
     listTitle.appendChild(newFavItem)
     newFavItem.textContent = faveName
+
+    // adding remove button to user list items
+    const addButton = document.createElement("button")
+    addButton.innerText = "Remove"
+    // *****NEED TO ADD SPACE BETWEEN BUTTON AND TEXT******
+    newFavItem.append(addButton)
+    addButton.addEventListener("click", () => {
+        newFavItem.remove()
+    })
+
 }
 
-// addToUserList()
+
 
 // search bar
 const searchForm = document.getElementById('search')
