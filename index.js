@@ -124,5 +124,3 @@ function darkMode() {
 // }
 // console.log(mouseoverInfo())
 
-console.log("test")
-console.log('Rem test')
