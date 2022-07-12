@@ -14,6 +14,18 @@ h1 {
     text-align: center;
 }
 
+/* assign layout to grid */
+.grid-even-columns {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns:70% 1fr;
+}
+
+.anime-collection {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
 
 /* search bar and button */
 form {
@@ -49,6 +61,13 @@ form {
     height: 18rem;
     width: auto;
 }
+
+/* user fav list */
+/* .user-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+} */
 
 
 /* light and dark mode button */
