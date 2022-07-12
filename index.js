@@ -1,6 +1,6 @@
 // gets information from the API
 
-limit = 5
+limit = 10
 
 fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity')
     .then(res => res.json())
@@ -39,10 +39,10 @@ function createAnimeCards(data) {
     createAnimeDivs.appendChild(addButton)
     addButton.textContent = "<3"
 
-    // adding ul for details
-    const ul = document.createElement("ul")
-    createAnimeDivs.appendChild(ul)
-    // ul.className = "ulStyle"
+    // adding detailList for details
+    const detailList = document.createElement("p")
+    createAnimeDivs.appendChild(detailList)
+    // detailList.className = "ulStyle"
 
     // like button event
     addButton.addEventListener("click", () => {
@@ -52,8 +52,22 @@ function createAnimeCards(data) {
 
     // adding Episodes
     const episodes = document.createElement('li')
-    ul.appendChild(episodes)
-    episodes.textContent = `Number of episodes: ${data.episodes}`
+    detailList.appendChild(episodes)
+    episodes.textContent = `Episodes: ${data.episodes}`
+
+    // adding type of program
+    const airedOn = document.createElement('li')
+    detailList.appendChild(airedOn)
+    airedOn.textContent = `Aired on: ${data.type}`
+
+    // ****MAY REMOVE****
+    // // adding start/end dates 
+    // const dates = document.createElement('li')
+    // const startDate = data.start_date
+    // const endDate = data.end_date
+    // detailList.appendChild(dates)
+    // dates.textContent = `${startDate} - ${endDate}`
+
 }
 
 // search bar
@@ -68,6 +82,7 @@ searchForm.addEventListener('submit', (e) => {
     fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
         .then(res => res.json())
         .then(data => console.log(data.results.forEach(createAnimeCards)))
+    searchForm.reset()
 })
 
 
@@ -89,3 +104,17 @@ function darkMode() {
         card.classList.toggle("darkCard")
     })
 }
+
+// Adding mouseover functionality
+function mouseoverInfo() {
+    const cards = document.getElementsByClassName("card")
+    const details = document.querySelector("detailList")
+    cards.addEventListener("click", (e) => {
+        e.currentTarget.addEventListener("click", () => {
+            details.classList.toggle("dropDown")
+
+        })
+
+    })
+}
+console.log(mouseoverInfo())
