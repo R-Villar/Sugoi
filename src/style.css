@@ -65,7 +65,8 @@ form {
     background-image: linear-gradient(rgb(164, 164, 164) 0%, rgb(255, 255, 255) 50%, rgb(164, 164, 164) 100%);
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
     border: 2px solid rgb(28, 110, 164);
-    display: inline-block;
+    display: block;
+    float: right;
 }
 
 .myLightButton:hover {
@@ -103,7 +104,8 @@ form {
     background-image: linear-gradient(rgb(79, 79, 79) 0%, rgb(33, 33, 33) 50%, rgb(79, 79, 79) 100%);
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
     border: 2px solid rgb(28, 110, 164);
-    display: inline-block;
+    display: block;
+    float: right;
 }
 
 .myDarkButton:hover {

@@ -27,6 +27,11 @@ function createAnimeCards(data) {
     createImg.className = "anime-image"
     createAnimeDivs.appendChild(createImg)
 
+    // eventlistener for adding to list
+    createImg.addEventListener("click", () => {
+        console.log(data.title)
+    })
+
     // adding like count
     const likes = document.createElement('p')
     let like = parseInt(data.score)
