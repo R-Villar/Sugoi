@@ -1,6 +1,6 @@
 // gets information from the API
 
-limit = 10
+limit = 5
 
 fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity')
     .then(res => res.json())
