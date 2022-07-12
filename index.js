@@ -42,6 +42,7 @@ function createAnimeCards(data) {
     // adding ul for details
     const ul = document.createElement("ul")
     createAnimeDivs.appendChild(ul)
+    // ul.className = "ulStyle"
 
     // like button event
     addButton.addEventListener("click", () => {
@@ -49,10 +50,10 @@ function createAnimeCards(data) {
         likes.textContent = `${like} likes`
     })
 
-    // adding Rank
-    const episodes = document.createElement('p')
-    createAnimeDivs.appendChild(episodes)
-    episodes.textContent = `# of episodes:${data.episodes}`
+    // adding Episodes
+    const episodes = document.createElement('li')
+    ul.appendChild(episodes)
+    episodes.textContent = `Number of episodes: ${data.episodes}`
 }
 
 // search bar

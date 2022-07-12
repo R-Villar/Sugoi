@@ -131,6 +131,7 @@ form {
 
 }
 
+/* style for hiding ul in cards */
 .ulStyle {
     visibility: hidden;
 }
