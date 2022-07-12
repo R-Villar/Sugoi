@@ -27,7 +27,6 @@ function createAnimeCards(data) {
     createImg.className = "anime-image"
     createAnimeDivs.appendChild(createImg)
 
-
     // adding like count
     const likes = document.createElement('p')
     let like = parseInt(data.score)
@@ -39,16 +38,17 @@ function createAnimeCards(data) {
     createAnimeDivs.appendChild(addButton)
     addButton.textContent = "<3"
 
-    // adding detailList for details
-    const detailList = document.createElement("p")
-    createAnimeDivs.appendChild(detailList)
-    // detailList.className = "ulStyle"
-
     // like button event
     addButton.addEventListener("click", () => {
         like++
         likes.textContent = `${like} likes`
     })
+
+
+    // adding detailList for details
+    const detailList = document.createElement("p")
+    createAnimeDivs.appendChild(detailList)
+    // detailList.className = "ulStyle"
 
     // adding Episodes
     const episodes = document.createElement('li')
@@ -71,11 +71,11 @@ function createAnimeCards(data) {
 }
 
 // search bar
-
 const searchForm = document.getElementById('search')
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
+    // Clears the cards
     animeCollection.innerHTML = ''
 
     const searching = document.getElementById('input-text').value
@@ -106,15 +106,15 @@ function darkMode() {
 }
 
 // Adding mouseover functionality
-function mouseoverInfo() {
-    const cards = document.getElementsByClassName("card")
-    const details = document.querySelector("detailList")
-    cards.addEventListener("click", (e) => {
-        e.currentTarget.addEventListener("click", () => {
-            details.classList.toggle("dropDown")
+// function mouseoverInfo() {
+//     const cards = document.getElementsByClassName("card")
+//     const details = document.querySelector("detailList")
+//     cards.addEventListener("click", (e) => {
+//         e.currentTarget.addEventListener("click", () => {
+//             details.classList.toggle("dropDown")
 
-        })
+//         })
 
-    })
-}
-console.log(mouseoverInfo())
+//     })
+// }
+// console.log(mouseoverInfo())

@@ -14,9 +14,11 @@ h1 {
     text-align: center;
 }
 
+
 /* search bar and button */
 form {
     display: flex;
+    justify-content: flex-end;
 }
 
 
