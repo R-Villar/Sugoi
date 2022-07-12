@@ -1,8 +1,12 @@
-// gets information from the API
-
+dropdownList = document.getElementById("dropdownList")
+dropdownList.addEventListener("change", (e) => {
+    let text = ""
+    return text = e.target.value
+})
+console.log(text)
 limit = 5
 
-fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity')
+fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
     .then(res => res.json())
     .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
@@ -111,7 +115,7 @@ searchForm.addEventListener('submit', (e) => {
     const searching = document.getElementById('input-text').value
     fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
         .then(res => res.json())
-        .then(data => console.log(data.results.forEach(createAnimeCards)))
+        .then(data => data.results.forEach(createAnimeCards))
     searchForm.reset()
 })
 
