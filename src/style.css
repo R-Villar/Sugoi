@@ -13,6 +13,7 @@ header {
 h1 {
     text-align: center;
 }
+
 /* search bar and button */
 form {
     display: flex;
@@ -29,7 +30,16 @@ form {
     height: 30rem;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 2px 2px 2px 2px #b17af0;
+    box-shadow: 2px 2px 4px 4px #b17af0;
+}
+
+.darkCard {
+    text-align: center;
+    width: 15rem;
+    height: 30rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 2px 2px 4px 4px #0f177a;
 }
 
 .anime-image {
@@ -119,4 +129,17 @@ form {
     font-variant: normal;
     text-transform: none;
 
+}
+
+.ulStyle {
+    visibility: hidden;
+}
+
+.dropDown {
+    visibility: visible;
+    -moz-transform: translate(0px, 50px);
+    -webkit-transform: translate(0px, 50px);
+    -o-transform: translate(0px, 50px);
+    -ms-transform: translate(0px, 50px);
+    transform: translate(0px, 50px);
 }

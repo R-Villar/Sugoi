@@ -3,14 +3,14 @@
 limit = 5
 
 fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity')
-.then(res => res.json())
-.then(data => data.top.slice(0, limit).forEach(createAnimeCards))
+    .then(res => res.json())
+    .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
 
 const animeCollection = document.getElementById('anime-collection')
 
 
-function createAnimeCards(data) { 
+function createAnimeCards(data) {
     // creates a container for the anime cards
     const createAnimeDivs = document.createElement("div")
     animeCollection.append(createAnimeDivs)
@@ -25,20 +25,24 @@ function createAnimeCards(data) {
     const createImg = document.createElement('img')
     createImg.src = data.image_url
     createImg.className = "anime-image"
-    createAnimeDivs.appendChild(createImg)   
+    createAnimeDivs.appendChild(createImg)
 
-    
+
     // adding like count
     const likes = document.createElement('p')
     let like = parseInt(data.score)
     createAnimeDivs.appendChild(likes)
     likes.textContent = `${like} likes`
-    
+
     // adding like button
     const addButton = document.createElement('button')
     createAnimeDivs.appendChild(addButton)
     addButton.textContent = "<3"
-    
+
+    // adding ul for details
+    const ul = document.createElement("ul")
+    createAnimeDivs.appendChild(ul)
+
     // like button event
     addButton.addEventListener("click", () => {
         like++
@@ -46,9 +50,9 @@ function createAnimeCards(data) {
     })
 
     // adding Rank
-    const rank = document.createElement('p')
-    createAnimeDivs.appendChild(rank)
-    rank.textContent = `Rank #${data.rank}`
+    const episodes = document.createElement('p')
+    createAnimeDivs.appendChild(episodes)
+    episodes.textContent = `# of episodes:${data.episodes}`
 }
 
 // search bar
@@ -61,8 +65,8 @@ searchForm.addEventListener('submit', (e) => {
 
     const searching = document.getElementById('input-text').value
     fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
-    .then(res => res.json())
-    .then(data => console.log(data.results.forEach(createAnimeCards)))
+        .then(res => res.json())
+        .then(data => console.log(data.results.forEach(createAnimeCards)))
 })
 
 
@@ -75,8 +79,12 @@ searchForm.addEventListener('submit', (e) => {
 function darkMode() {
     const element = document.body;
     element.classList.toggle("dark-mode");
-    const button = document.querySelectorAll("button")
-    button.forEach(element => {
-        element.classList.toggle("myDarkButton")
+    const buttons = document.querySelectorAll("button")
+    buttons.forEach(button => {
+        button.classList.toggle("myDarkButton")
+    })
+    const cards = document.querySelectorAll(".card")
+    cards.forEach(card => {
+        card.classList.toggle("darkCard")
     })
 }
