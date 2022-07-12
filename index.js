@@ -29,7 +29,8 @@ function createAnimeCards(data) {
 
     // eventlistener for adding to list
     createImg.addEventListener("click", () => {
-        console.log(data.title)
+        faveName = data.title
+        addToUserList(faveName)
     })
 
     // adding like count
@@ -48,7 +49,6 @@ function createAnimeCards(data) {
         like++
         likes.textContent = `${like} likes`
     })
-
 
     // adding detailList for details
     const detailList = document.createElement("p")
@@ -74,6 +74,19 @@ function createAnimeCards(data) {
     // dates.textContent = `${startDate} - ${endDate}`
 
 }
+
+// creating the user personal list
+const userList = document.getElementsByClassName('user-list')
+const listTitle = document.getElementById('list-title')
+
+// 
+function addToUserList(faveName) {
+    const newFavItem = document.createElement('li')
+    listTitle.appendChild(newFavItem)
+    newFavItem.textContent = faveName
+}
+
+// addToUserList()
 
 // search bar
 const searchForm = document.getElementById('search')

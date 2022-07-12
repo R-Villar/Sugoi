@@ -50,6 +50,13 @@ form {
     width: auto;
 }
 
+/* user fav list */
+.user-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 
 /* light and dark mode button */
 .myLightButton {
