@@ -17,29 +17,40 @@
         <h1>Sugoi</h1>
     </header>
 
+    <menu>
 
-    <div class="container">
-        <form id="search">
+        <form id="dropdownForm">
+            <label for="anime">Choose</label>
+            <select name="anime" id="dropdownList">
+                <option value="anime">Anime</option>
+                <option value="manga">Manga</option>
+            </select>
+        </form>
 
-            <input type="text" placeholder="Search Anime..." id="input-text">
-            <br>
-            <input type="submit" name="submit" class="submit">
-        </form>   
-    </div>
+
+        <div class="container">
+            <form id="search">
+
+                <input type="text" placeholder="Search Anime..." id="input-text">
+                <br>
+                <input type="submit" name="submit" class="submit">
+            </form>
+        </div>
+    </menu>
 
     <div class="grid-even-columns">
-        
+
         <div id="anime-collection">
 
         </div>
         <div class="user-list">
             <h3 id="list-title"> My faves </h3>
-            
+
         </div>
 
     </div>
 
-    
+
 </body>
 
 </html>
