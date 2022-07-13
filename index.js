@@ -10,7 +10,7 @@ fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
 
 // dropdown function
 function selectDropdownList() {
-        // dropdown
+    // dropdown
     const dropdownList = document.getElementById("dropdownList")
     dropdownList.addEventListener("change", (e) => {
         let picked = e.target.value
@@ -22,7 +22,7 @@ function selectDropdownList() {
             .then(res => res.json())
             .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
-    selectLimitDropdown(picked)
+        selectLimitDropdown(picked)
     })
 }
 selectDropdownList(selectLimitDropdown)
@@ -75,7 +75,8 @@ function createAnimeCards(data) {
     // adding like button
     const addButton = document.createElement('button')
     createAnimeDivs.appendChild(addButton)
-    addButton.textContent = "<3"
+    addButton.className = "like-button"
+    addButton.textContent = "❤️"
 
     // like button event
     addButton.addEventListener("click", () => {
@@ -136,6 +137,7 @@ searchForm.addEventListener('submit', (e) => {
 function darkMode() {
     const element = document.body;
     element.classList.toggle("dark-mode");
+
     const buttons = document.querySelectorAll("button")
     buttons.forEach(button => {
         button.classList.toggle("myDarkButton")
@@ -143,6 +145,10 @@ function darkMode() {
     const cards = document.querySelectorAll(".card")
     cards.forEach(card => {
         card.classList.toggle("darkCard")
+    })
+    const titles = document.querySelectorAll(".title")
+    titles.forEach(title => {
+        title.classList.toggle("darkTitle")
     })
 }
 
