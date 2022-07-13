@@ -73,9 +73,10 @@ function createAnimeCards(data) {
     likes.textContent = `${like} likes`
 
     // adding like button
-    const addButton = document.createElement('button')
+    const addButton = document.createElement('a')
     createAnimeDivs.appendChild(addButton)
-    addButton.textContent = "<3"
+    addButton.className = "like-button"
+    addButton.textContent = "❤️"
 
     // like button event
     addButton.addEventListener("click", () => {
