@@ -24,7 +24,7 @@ h1 {
 .grid-even-columns {
     display: grid;
     gap: 1rem;
-    grid-template-columns:70% 1fr;
+    grid-template-columns: 80% 1fr;
 }
 
 .anime-collection {
@@ -36,7 +36,7 @@ h1 {
 /* search bar and button */
 form {
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 }
 
 
@@ -102,20 +102,6 @@ form {
     background: #A4A4A4;
 }
 
-.light-mode {
-    background: #ffffff;
-
-    font-family: "Times New Roman", Times, serif;
-    font-size: 15px;
-    letter-spacing: 0px;
-    word-spacing: 0px;
-    color: #000000;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: normal;
-
-}
-
 .myDarkButton {
     color: rgb(255, 255, 255);
     font-size: 15px;
@@ -140,6 +126,23 @@ form {
 .myDarkButton:active {
     background: #4F4F4F;
 }
+
+.light-mode {
+    background: white;
+
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+
+}
+
 
 .dark-mode {
     background: #4F4F4F;
@@ -176,8 +179,25 @@ form {
 
 .user-list {
     background-color: #4F4F4F;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
+.title {
+    color: #7e3b3b;
+    background: #FFFFFF;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614;
+
+}
+
+.darkTitle {
+    color: #FFFFFF;
+    background: #313131;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614;
+}
 
 .like-button {
     font-size: 1.2rem;
@@ -190,4 +210,3 @@ form {
     padding: 0.25em 1em;
     border-radius: 0.25em;
 }
-
