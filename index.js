@@ -1,31 +1,48 @@
-
-
 // main card collection
 const animeCollection = document.getElementById('anime-collection')
+let limit = 10
 
 // on load fetch
 fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
     .then(res => res.json())
     .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
-// dropdown
-const dropdownList = document.getElementById("dropdownList")
-dropdownList.addEventListener("change", (e) => {
-    let picked = e.target.value
-    console.log(picked)
 
-    // clears cards
-    animeCollection.innerHTML = ''
+// dropdown function
+function selectDropdownList() {
+        // dropdown
+    const dropdownList = document.getElementById("dropdownList")
+    dropdownList.addEventListener("change", (e) => {
+        let picked = e.target.value
 
-    fetch(`https://api.jikan.moe/v3/top/${picked}/1/bypopularity`)
-        .then(res => res.json())
-        .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
+        // clears cards
+        animeCollection.innerHTML = ''
 
-})
+        fetch(`https://api.jikan.moe/v3/top/${picked}/1/bypopularity`)
+            .then(res => res.json())
+            .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
-limit = 5
+    selectLimitDropdown(picked)
+    })
+}
+selectDropdownList(selectLimitDropdown)
 
+// dropdown function
+function selectLimitDropdown(picked) {
+    // limit dropdown 
+    const limitDropdown = document.getElementById('limit-dropdown')
+    limitDropdown.addEventListener('change', (e) => {
+        let limit = e.target.value
 
+        animeCollection.innerHTML = ''
+
+        fetch(`https://api.jikan.moe/v3/top/${picked}/1/bypopularity`)
+            .then(res => res.json())
+            .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
+    })
+}
+
+// creates main group of cards on screen
 function createAnimeCards(data) {
     // creates a container for the anime cards
     const createAnimeDivs = document.createElement("div")
@@ -45,11 +62,9 @@ function createAnimeCards(data) {
 
     // eventlistener for adding to list
     createImg.addEventListener("click", () => {
-        faveName = data.title
+        faveName = data.title + '  ' // adds space between title and btn
         addToUserList(faveName)
     })
-
-    // eventlistener for removing from list
 
     // adding like count
     const likes = document.createElement('p')
@@ -82,15 +97,6 @@ function createAnimeCards(data) {
     const airedOn = document.createElement('li')
     detailList.appendChild(airedOn)
     airedOn.textContent = `Aired on: ${data.type}`
-
-    // ****MAY REMOVE****
-    // // adding start/end dates 
-    // const dates = document.createElement('li')
-    // const startDate = data.start_date
-    // const endDate = data.end_date
-    // detailList.appendChild(dates)
-    // dates.textContent = `${startDate} - ${endDate}`
-
 }
 
 // creating the user personal list
@@ -106,31 +112,25 @@ function addToUserList(faveName) {
     // adding remove button to user list items
     const addButton = document.createElement("button")
     addButton.innerText = "Remove"
-    // *****NEED TO ADD SPACE BETWEEN BUTTON AND TEXT******
     newFavItem.append(addButton)
     addButton.addEventListener("click", () => {
         newFavItem.remove()
     })
-
 }
 
 // search bar
 const searchForm = document.getElementById('search')
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
-
     // Clears the cards
     animeCollection.innerHTML = ''
-
     const searching = document.getElementById('input-text').value
     fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
         .then(res => res.json())
         .then(data => data.results.forEach(createAnimeCards))
+    // selectDropdownList(picked) 
     searchForm.reset()
 })
-
-// searchAnime(createAnimeCards)
-
 
 // Dark mode toggle
 function darkMode() {

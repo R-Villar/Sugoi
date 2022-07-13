@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugio Anime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./src/style.css">
     <script defer type="text/javascript" src="./index.js"></script>
 </head>
@@ -20,14 +24,18 @@
     <menu>
 
         <form id="dropdownForm">
-            <label for="anime">Choose</label>
+            <label for="anime">Category</label>
             <select name="anime" id="dropdownList">
                 <option value="anime">Anime</option>
                 <option value="manga">Manga</option>
             </select>
-        </form>
-        <form action="limit-dropdown">
-            <label for=""></label>
+            
+            <label for="range">range</label>
+            <select name="test" id="limit-dropdown">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
         </form>
 
         <div class="container">
