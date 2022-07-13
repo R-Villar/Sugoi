@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugio Anime</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./src/style.css">
@@ -17,11 +17,11 @@
 <body class="light-mode">
     <button style="align-self: right" class="myLightButton" onclick="darkMode()">Dark Mode</button>
 
-    <header>
+    <header class="title">
         <h1>Sugoi</h1>
     </header>
 
-    <menu>
+    <menu class="grid-even-columns">
 
         <form id="dropdownForm">
             <label for="anime">Category</label>
@@ -29,7 +29,7 @@
                 <option value="anime">Anime</option>
                 <option value="manga">Manga</option>
             </select>
-            
+
             <label for="range">range</label>
             <select name="test" id="limit-dropdown">
                 <option value="10">10</option>
