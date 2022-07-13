@@ -1,17 +1,29 @@
-dropdownList = document.getElementById("dropdownList")
-dropdownList.addEventListener("change", (e) => {
-    let text = ""
-    return text = e.target.value
-})
-console.log(text)
-limit = 5
 
+
+// main card collection
+const animeCollection = document.getElementById('anime-collection')
+
+// on load fetch
 fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
     .then(res => res.json())
     .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
+// dropdown
+const dropdownList = document.getElementById("dropdownList")
+dropdownList.addEventListener("change", (e) => {
+    let picked = e.target.value
+    console.log(picked)
 
-const animeCollection = document.getElementById('anime-collection')
+    // clears cards
+    animeCollection.innerHTML = ''
+
+    fetch(`https://api.jikan.moe/v3/top/${picked}/1/bypopularity`)
+        .then(res => res.json())
+        .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
+
+})
+
+limit = 5
 
 
 function createAnimeCards(data) {
@@ -102,8 +114,6 @@ function addToUserList(faveName) {
 
 }
 
-
-
 // search bar
 const searchForm = document.getElementById('search')
 searchForm.addEventListener('submit', (e) => {
@@ -119,10 +129,7 @@ searchForm.addEventListener('submit', (e) => {
     searchForm.reset()
 })
 
-
-
 // searchAnime(createAnimeCards)
-
 
 
 // Dark mode toggle
@@ -152,4 +159,3 @@ function darkMode() {
 //     })
 // }
 // console.log(mouseoverInfo())
-
