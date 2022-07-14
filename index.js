@@ -87,17 +87,28 @@ function createAnimeCards(data) {
     // adding detailList for details
     const detailList = document.createElement("p")
     createAnimeDivs.appendChild(detailList)
-    // detailList.className = "ulStyle"
 
     // adding Episodes
     const episodes = document.createElement('li')
     detailList.appendChild(episodes)
     episodes.textContent = `Episodes: ${data.episodes}`
+    if (typeof data.episodes === 'undefined') {
+        episodes.textContent = 'Episodes: Not Found'
+    }
 
     // adding type of program
     const airedOn = document.createElement('li')
     detailList.appendChild(airedOn)
     airedOn.textContent = `Aired on: ${data.type}`
+
+    // // Adding mouseover functionality
+    // createAnimeDivs.addEventListener("mouseover", () => {
+    //     createAnimeDivs.classList.toggle("darkCard")
+    // })
+
+
+
+
 }
 
 // creating the user personal list
@@ -126,12 +137,27 @@ searchForm.addEventListener('submit', (e) => {
     // Clears the cards
     animeCollection.innerHTML = ''
     const searching = document.getElementById('input-text').value
-    fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
-        .then(res => res.json())
-        .then(data => data.results.forEach(createAnimeCards))
-    // selectDropdownList(picked) 
-    searchForm.reset()
+    // checking to see if search is empty
+    if (!emptyFields(searching)) {
+        fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
+            .then(res => res.json())
+            .then(data => data.results.forEach(createAnimeCards))
+        // selectDropdownList(picked) 
+        searchForm.reset()
+    } else {
+        fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
+            .then(res => res.json())
+            .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
+    }
+
 })
+// alert for empty text field
+function emptyFields(field) {
+    if (field === '') {
+        alert('Please enter text.')
+        return true
+    }
+}
 
 // Dark mode toggle
 function darkMode() {
@@ -151,17 +177,3 @@ function darkMode() {
         title.classList.toggle("darkTitle")
     })
 }
-
-// Adding mouseover functionality
-// function mouseoverInfo() {
-//     const cards = document.getElementsByClassName("card")
-//     const details = document.querySelector("detailList")
-//     cards.addEventListener("click", (e) => {
-//         e.currentTarget.addEventListener("click", () => {
-//             details.classList.toggle("dropDown")
-
-//         })
-
-//     })
-// }
-// console.log(mouseoverInfo())
