@@ -20,6 +20,7 @@ h1 {
     grid-template-columns: 1fr 1fr;
 
 }
+
 /* assign layout to grid */
 .grid-even-columns {
     display: grid;
@@ -51,6 +52,7 @@ form {
     display: inline-grid;
     margin: 1rem 2rem;
     box-shadow: 2px 2px 4px 4px #b17af0;
+
 }
 
 .darkCard {
@@ -67,14 +69,6 @@ form {
     height: 18rem;
     width: auto;
 }
-
-/* user fav list */
-/* .user-list {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-} */
-
 
 /* light and dark mode button */
 .myLightButton {
@@ -108,8 +102,8 @@ form {
     line-height: 15px;
     padding: 4px;
     border-radius: 7px;
-    font-family: "Times New Roman", Times, serif;
-    font-weight: 400;
+    font-family: Georgia, serif;
+    font-weight: normal;
     font-style: normal;
     font-variant: normal;
     background-image: linear-gradient(rgb(79, 79, 79) 0%, rgb(33, 33, 33) 50%, rgb(79, 79, 79) 100%);
@@ -146,9 +140,6 @@ form {
 
 .dark-mode {
     background: #4F4F4F;
-    background: -moz-linear-gradient(top, #4F4F4F 0%, #212121 50%, #4F4F4F 100%);
-    background: -webkit-linear-gradient(top, #4F4F4F 0%, #212121 50%, #4F4F4F 100%);
-    background: linear-gradient(to bottom, #4F4F4F 0%, #212121 50%, #4F4F4F 100%);
 
     font-family: "Times New Roman", Times, serif;
     font-size: 15px;
@@ -164,39 +155,51 @@ form {
 }
 
 /* style for hiding ul in cards */
-.ulStyle {
+/* .ulStyle {
     visibility: hidden;
-}
+} */
 
-.dropDown {
+/* .dropDown {
     visibility: visible;
-    -moz-transform: translate(0px, 50px);
+    /* -moz-transform: translate(0px, 50px);
     -webkit-transform: translate(0px, 50px);
     -o-transform: translate(0px, 50px);
     -ms-transform: translate(0px, 50px);
-    transform: translate(0px, 50px);
-}
+    transform: translate(0px, 50px); 
+} */
 
 .user-list {
-    background-color: #4F4F4F;
+    background-image: url(https://wallpaperaccess.com/full/1559254.png);
+    background-size: cover;
     padding: 1rem;
     border-radius: 10px;
+    color: #FFFFFF;
 }
 
 .title {
-    color: #7e3b3b;
-    background: #FFFFFF;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: x-large;
-    text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614;
+    background-image: url(https://i.pinimg.com/736x/52/07/56/5207563674553b58857248faeb34f844.jpg);
+    background-size: cover;
+    font-size: 2rem;
+    /* text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614; */
 
+}
+
+.title>h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: cornflowerblue;
 }
 
 .darkTitle {
     color: #FFFFFF;
-    background: #313131;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614;
+    background-image: url(https://i.pinimg.com/736x/52/07/56/5207563674553b58857248faeb34f844.jpg);
+    background-size: cover;
+    font-size: 2rem;
+    /* text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614; */
+}
+
+.darkTitle>h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: tomato;
 }
 
 .like-button {
@@ -206,7 +209,7 @@ form {
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    border:  0.125em solid;
+    border: 0.125em solid;
     padding: 0.25em 1em;
     border-radius: 0.25em;
 }
