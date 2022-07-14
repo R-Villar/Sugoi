@@ -87,6 +87,7 @@ function createAnimeCards(data) {
     // adding detailList for details
     const detailList = document.createElement("p")
     createAnimeDivs.appendChild(detailList)
+    // detailList.className = "ulStyle"
 
     // adding Episodes
     const episodes = document.createElement('li')
@@ -102,8 +103,8 @@ function createAnimeCards(data) {
     airedOn.textContent = `Aired on: ${data.type}`
 
     // // Adding mouseover functionality
-    // createAnimeDivs.addEventListener("mouseover", () => {
-    //     createAnimeDivs.classList.toggle("darkCard")
+    // createImg.addEventListener("mouseover", () => {
+    //     createImg.classList.toggle("dropDown")
     // })
 
 
