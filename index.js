@@ -1,5 +1,8 @@
 const animeCollection = document.getElementById('anime-collection')
 const searchForm = document.getElementById('search')
+// creating the user personal list
+const userList = document.getElementsByClassName('user-list')
+const listTitle = document.getElementById('list-title')
 let limit = 10
 
 // on load fetch
@@ -65,7 +68,7 @@ function createAnimeCards(data) {
     createImg.addEventListener("click", () => {
         faveName = data.title + '  ' // adds space between title and btn
         addToUserList(faveName)
-
+            // add to user list
             function addToUserList(faveName) {
                 const newFavItem = document.createElement('li')
                 listTitle.appendChild(newFavItem)
@@ -118,29 +121,6 @@ function createAnimeCards(data) {
     detailList.appendChild(airedOn)
     airedOn.textContent = `Aired on: ${data.type}`
 
-    // // Adding mouseover functionality
-    // createImg.addEventListener("mouseover", () => {
-    //     createImg.classList.toggle("dropDown")
-    // })
-}
-
-// creating the user personal list
-const userList = document.getElementsByClassName('user-list')
-const listTitle = document.getElementById('list-title')
-
-// add to user list
-function addToUserList(faveName) {
-    const newFavItem = document.createElement('li')
-    listTitle.appendChild(newFavItem)
-    newFavItem.textContent = faveName
-
-    // adding remove button to user list items
-    const addButton = document.createElement("button")
-    addButton.innerText = "Remove"
-    newFavItem.append(addButton)
-    addButton.addEventListener("click", () => {
-        newFavItem.remove()
-    })
 }
 
 // search bar
