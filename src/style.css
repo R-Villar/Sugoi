@@ -50,22 +50,25 @@ form {
 }
 
 .card {
+    background-color: #c7b3df;
     text-align: center;
     width: 15rem;
     height: 30rem;
     display: inline-grid;
     margin: 1rem 2rem;
     box-shadow: 2px 2px 4px 4px #b17af0;
+    border-radius: 5px;
 
 }
 
 .darkCard {
+    background-color: #212e82;
     text-align: center;
     width: 15rem;
     height: 30rem;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 2px 2px 4px 4px #0f177a;
+    box-shadow: 2px 2px 4px 4px #3d45aa;
 }
 
 .anime-image {
@@ -182,7 +185,8 @@ form {
     background-size: cover;
     font-size: 2rem;
     text-shadow: 2px 2px 0 #20c614, 2px -2px 0 #20c614, -2px 2px 0 #20c614, -2px -2px 0 #20c614, 2px 0px 0 #20c614, 0px 2px 0 #20c614, -2px 0px 0 #20c614, 0px -2px 0 #20c614;
-
+    border: 10px solid rgb(35, 93, 180);
+    border-radius: 5px;
 }
 
 .title>h1 {
