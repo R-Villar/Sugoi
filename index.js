@@ -68,7 +68,7 @@ function createAnimeCards(data) {
     createImg.addEventListener("click", () => {
         faveName = data.title + '  ' // adds space between title and btn
         addToUserList(faveName)
-
+            // add to user list
             function addToUserList(faveName) {
                 const newFavItem = document.createElement('li')
                 listTitle.appendChild(newFavItem)
@@ -121,21 +121,6 @@ function createAnimeCards(data) {
     detailList.appendChild(airedOn)
     airedOn.textContent = `Aired on: ${data.type}`
 
-}
-
-// add to user list
-function addToUserList(faveName) {
-    const newFavItem = document.createElement('li')
-    listTitle.appendChild(newFavItem)
-    newFavItem.textContent = faveName
-
-    // adding remove button to user list items
-    const addButton = document.createElement("button")
-    addButton.innerText = "Remove"
-    newFavItem.append(addButton)
-    addButton.addEventListener("click", () => {
-        newFavItem.remove()
-    })
 }
 
 // search bar
