@@ -1,5 +1,5 @@
-// main card collection
 const animeCollection = document.getElementById('anime-collection')
+const searchForm = document.getElementById('search')
 let limit = 10
 
 // on load fetch
@@ -7,6 +7,14 @@ fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
     .then(res => res.json())
     .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
 
+
+function fetchList(value1, value2) {
+// value1 = picked
+// value2 = limit
+    fetch(`https://api.jikan.moe/v3/top/${value1}/1/bypopularity`)
+            .then(res => res.json())
+            .then(data => data.top.slice(0, value2).forEach(createAnimeCards))
+}
 
 // dropdown function
 function selectDropdownList() {
@@ -17,12 +25,8 @@ function selectDropdownList() {
 
         // clears cards
         animeCollection.innerHTML = ''
-
-        fetch(`https://api.jikan.moe/v3/top/${picked}/1/bypopularity`)
-            .then(res => res.json())
-            .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
-
-        selectLimitDropdown(picked)
+        fetchList(picked, limit)  //calls back our fetch
+        selectLimitDropdown(picked)   
     })
 }
 selectDropdownList(selectLimitDropdown)
@@ -35,10 +39,7 @@ function selectLimitDropdown(picked) {
         let limit = e.target.value
 
         animeCollection.innerHTML = ''
-
-        fetch(`https://api.jikan.moe/v3/top/${picked}/1/bypopularity`)
-            .then(res => res.json())
-            .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
+        fetchList(picked, limit)  //calls back our fetch
     })
 }
 
@@ -64,6 +65,21 @@ function createAnimeCards(data) {
     createImg.addEventListener("click", () => {
         faveName = data.title + '  ' // adds space between title and btn
         addToUserList(faveName)
+
+            function addToUserList(faveName) {
+                const newFavItem = document.createElement('li')
+                listTitle.appendChild(newFavItem)
+                newFavItem.textContent = faveName
+            
+                // adding remove button to user list items
+                const addButton = document.createElement("button")
+                addButton.innerText = "Remove"
+                newFavItem.append(addButton)
+                addButton.addEventListener("click", () => {
+                    newFavItem.remove()
+                })
+            }
+        
     })
 
     // adding like count
@@ -106,10 +122,6 @@ function createAnimeCards(data) {
     // createImg.addEventListener("mouseover", () => {
     //     createImg.classList.toggle("dropDown")
     // })
-
-
-
-
 }
 
 // creating the user personal list
@@ -132,7 +144,6 @@ function addToUserList(faveName) {
 }
 
 // search bar
-const searchForm = document.getElementById('search')
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
     // Clears the cards
@@ -143,14 +154,12 @@ searchForm.addEventListener('submit', (e) => {
         fetch(`https://api.jikan.moe/v3/search/anime?q=${searching}&order_by=tytle&sort=asc&limit=${limit}`)
             .then(res => res.json())
             .then(data => data.results.forEach(createAnimeCards))
-        // selectDropdownList(picked) 
         searchForm.reset()
     } else {
         fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
             .then(res => res.json())
             .then(data => data.top.slice(0, limit).forEach(createAnimeCards))
     }
-
 })
 // alert for empty text field
 function emptyFields(field) {
